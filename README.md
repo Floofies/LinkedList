@@ -5,7 +5,7 @@ Singly linked, doubly linked, and circular LinkedList classes from Differentia.j
 - [`DoubleLinkedList`](#doublelinkedlist)
 - [`CircularLinkedList`](#circularlinkedlist)
 - [`CircularDoubleLinkedList`](#circularlinkedlist)
-- [`ListElement`](#listelement)
+- [`ListElement`](#listelement-1)
 
 # `LinkedList`
 
