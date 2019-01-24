@@ -1,0 +1,32 @@
+{
+	"name": "linkedlist",
+	"version": "1.0.0",
+	"description": "Singly linked, doubly linked, and circular LinkedList",
+	"keywords": [
+		"adt",
+		"abstract-data-type",
+		"linkedlist",
+		"linked-list",
+		"list",
+		"datastructure",
+		"data-structure"
+	],
+	"homepage": "https://github.com/Floofies/LinkedList",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Floofies/LinkedList.git"
+	},
+	"bugs": {
+		"url": "https://github.com/Floofies/LinkedList/issues"
+	},
+	"devDependencies": {
+		"jasmine": ""
+	},
+	"scripts": {
+		"test": "jasmine",
+		"prepublish": "npm test"
+	},
+	"main": "index.js",
+	"author": "Dani Glore @Floofies",
+	"license": "MIT"
+}
