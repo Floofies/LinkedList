@@ -7,6 +7,16 @@ Singly linked, doubly linked, and circular LinkedList classes from Differentia.j
 - [`CircularDoubleLinkedList`](#circularlinkedlist)
 - [`ListElement`](#listelement-1)
 
+You can import the data structure constructors like so:
+
+```JavaScript
+const lists = require("linkedlists");
+const LinkedList = lists.LinkedList;
+const DoubleLinkedList = lists.DoubleLinkedList;
+const CircularLinkedList = lists.CircularLinkedList;
+const CircularDoubleLinkedList = lists.CircularDoubleLinkedList;
+```
+
 # `LinkedList`
 
 *Class*
