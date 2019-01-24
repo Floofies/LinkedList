@@ -1,11 +1,11 @@
 # LinkedList
 Singly linked, doubly linked, and circular LinkedList classes from Differentia.js
 
-- [`LinkedList`](linkedlist)
-- [`DoubleLinkedList`](doublelinkedlist)
-- [`CircularLinkedList`](circularlinkedlist)
-- [`CircularDoubleLinkedList`](circularlinkedlist)
-- [`List`](listelement)
+- [`LinkedList`](#linkedlist)
+- [`DoubleLinkedList`](#doublelinkedlist)
+- [`CircularLinkedList`](#circularlinkedlist)
+- [`CircularDoubleLinkedList`](#circularlinkedlist)
+- [`ListElement`](#listelement)
 
 # `LinkedList`
 
