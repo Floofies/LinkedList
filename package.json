@@ -1,6 +1,6 @@
 {
 	"name": "listlib",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "Singly linked, doubly linked, and circular LinkedList",
 	"keywords": [
 		"adt",
