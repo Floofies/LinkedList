@@ -2,7 +2,7 @@
 Singly linked, doubly linked, and circular LinkedList classes.
 
 - [`LinkedList`](#linkedlist)
-  -[Instance Properties](#instance-properties)
+  - [Instance Properties](#instance-properties)
     - [`head`](#linkedlisthead)
     - [`tail`](#linkedlisttail)
     - [`size`](#linkedlistsize)
