@@ -1,6 +1,8 @@
 # LinkedList
 Singly linked, doubly linked, and circular LinkedList classes.
 
+[![NPM](https://nodei.co/npm/listlib.png)](https://nodei.co/npm/listlib/)
+
 - [`LinkedList`](#linkedlist)
   - [Instance Properties](#instance-properties)
     - [`head`](#linkedlisthead)
