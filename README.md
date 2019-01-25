@@ -885,7 +885,7 @@ list.remove(element);
 
 ## Prototype Methods
 
-### `LinkedList.prototype.fromElement`
+### `ListElement.prototype.fromElement`
 
 *Function*
 ```JavaScript
