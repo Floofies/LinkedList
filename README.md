@@ -1,5 +1,5 @@
 # LinkedList
-Singly linked, doubly linked, and circular LinkedList classes from Differentia.js
+Singly linked, doubly linked, and circular LinkedList classes.
 
 - [`LinkedList`](#linkedlist)
 - [`DoubleLinkedList`](#doublelinkedlist)
@@ -7,15 +7,25 @@ Singly linked, doubly linked, and circular LinkedList classes from Differentia.j
 - [`CircularDoubleLinkedList`](#circularlinkedlist)
 - [`ListElement`](#listelement-1)
 
-You can import the data structure constructors like so:
+You can import the list constructors like so:
 
 ```JavaScript
-const lists = require("linkedlists");
-const LinkedList = lists.LinkedList;
-const DoubleLinkedList = lists.DoubleLinkedList;
-const CircularLinkedList = lists.CircularLinkedList;
-const CircularDoubleLinkedList = lists.CircularDoubleLinkedList;
+const listlib = require("listlib");
+const LinkedList = listlib.LinkedList;
+const DoubleLinkedList = listlib.DoubleLinkedList;
+const CircularLinkedList = listlib.CircularLinkedList;
+const CircularDoubleLinkedList = listlib.CircularDoubleLinkedList;
+
+// Using ES6 Destructuring Assignment
+const {
+  LinkedList,
+  DoubleLinkedList,
+  CircularLinkedList,
+  CircularDoubleLinkedList
+} = require("listlib");
 ```
+
+---
 
 # `LinkedList`
 
@@ -23,7 +33,7 @@ const CircularDoubleLinkedList = lists.CircularDoubleLinkedList;
 ```JavaScript
 new LinkedList( [ iterable = null ] );
 ```
-> Uses [ListElement](http://differentia.io/?p=ListElement) to represent the list structure.
+> Uses [ListElement](#listelement-1) to represent the list structure.
 
 Acyclic Singly Linked List.
 
@@ -40,7 +50,7 @@ Example 1: Basic Usage:
 var arr = [1,2,3,4,5];
 
 // New LinkedList is created using the contents of `arr`.
-var list = new differentia.LinkedList(arr);
+var list = new LinkedList(arr);
 
 // Append "6" to the end of the list, returns a new ListElement.
 var six = list.push(6);
@@ -113,7 +123,7 @@ Indicates if the LinkedList is circular, linking the head and tail elements.
 
 ### `ListElement`
 
-[See the ListElement documentation.](http://differentia.io/?p=ListElement)
+[See the ListElement documentation.](#listelement-1)
 
 ---
 
@@ -140,7 +150,7 @@ Example 1: Basic Usage:
 var arr = [1,2,3,4,5];
 
 // New LinkedList is created using the contents of `arr`.
-var list = new differentia.LinkedList(arr);
+var list = new LinkedList(arr);
 
 // Logs 1, 2, 3, 4, and 5.
 for (const value of list) console.log(element.payload);
@@ -153,7 +163,7 @@ Example 1: `ends` Usage:
 var arr = [1,2,3,4,5];
 
 // New LinkedList is created using the contents of `arr`.
-var list = new differentia.LinkedList(arr);
+var list = new LinkedList(arr);
 
 // Logs `null`, 1, 2, 3, 4, 5, and `null`.
 for (const value of list[Symbol.iterator](true)) console.log(element.payload);
@@ -177,7 +187,7 @@ Example 1: Basic Usage:
 var arr = [1,2,3,4,5];
 
 // New LinkedList is created using the contents of `arr`.
-var list = new differentia.LinkedList(arr);
+var list = new LinkedList(arr);
 
 // Logs 1, 2, 3, 4, and 5.
 for (const value of list.values()) console.log(value);
@@ -201,7 +211,7 @@ Example 1: Basic Usage:
 var arr = [1,2,3,4,5];
 
 // New LinkedList is created using the contents of `arr`.
-var list = new differentia.LinkedList(arr);
+var list = new LinkedList(arr);
 
 // Logs 1, 2, 3, 4, and 5.
 for (const value of list.values()) console.log(value);
@@ -243,7 +253,7 @@ Example 1: Basic Usage:
 var arr = [1,2,3,4,5];
 
 // New LinkedList is created using the contents of `arr`.
-var list = new differentia.LinkedList(arr);
+var list = new LinkedList(arr);
 
 // Logs 1, 2, 3, 4, and 5.
 list.forEach(function (value, index, list) {
@@ -274,7 +284,7 @@ Example 1: Basic Usage:
 var arr = [1,2,3,4,5];
 
 // New empty LinkedList is created.
-var list = new differentia.LinkedList();
+var list = new LinkedList();
 
 // Contents of `arr` are inserted into the list.
 list.fromIterable(arr);
@@ -303,7 +313,7 @@ Example 1: Basic Usage:
 var numbers = 123;
 
 // Returns a new ListElement with `numbers` assigned to `element.payload`.
-var element = differentia.LinkedList.coerceElement(numbers);
+var element = LinkedList.coerceElement(numbers);
 ```
 
 ---
@@ -329,7 +339,7 @@ Example 1: Basic Usage:
 var arr = [1,2,3,4,5];
 
 // New LinkedList is created using the contents of `arr`.
-var list = new differentia.LinkedList(arr);
+var list = new LinkedList(arr);
 
 // Returns the ListElement at index 4, the last element in the list, which contains "5".
 var foundElement = list.item(4);
@@ -358,7 +368,7 @@ Example 1: Basic Usage:
 var arr = [1,2,3,4,5];
 
 // New LinkedList is created using the contents of `arr`.
-var list = new differentia.LinkedList(arr);
+var list = new LinkedList(arr);
 
 // Returns the ListElement containing "3".
 var foundElement = list.find(3);
@@ -382,7 +392,7 @@ Example 1: Basic Usage:
 var arr = [1,2,3,4,5];
 
 // New LinkedList is created using the contents of `arr`.
-var list = new differentia.LinkedList(arr);
+var list = new LinkedList(arr);
 
 // List becomes empty.
 list.clear();
@@ -411,9 +421,9 @@ Example 1: Basic Usage:
 var arr = [1,2,3,4,5];
 
 // New LinkedLists are created using the contents of `arr`.
-var list1 = new differentia.LinkedList(arr);
-var list2 = new differentia.LinkedList(arr);
-var list3 = new differentia.LinkedList(arr);
+var list1 = new LinkedList(arr);
+var list2 = new LinkedList(arr);
+var list3 = new LinkedList(arr);
 
 // Appends `list2` and `list3` to the end of `list1`.
 list1.concat(list2, list3);
@@ -447,7 +457,7 @@ Example 1: Basic Usage:
 var arr = [1,2,3,4,5];
 
 // New LinkedList is created using the contents of `arr`.
-var list = new differentia.LinkedList(arr);
+var list = new LinkedList(arr);
 
 // Get the element which contains "3".
 var three = list.get(3);
@@ -483,7 +493,7 @@ Example 1: Basic Usage:
 var arr = [1,2,3,4,5];
 
 // New LinkedList is created using the contents of `arr`.
-var list = new differentia.LinkedList(arr);
+var list = new LinkedList(arr);
 
 // Get the element which contains "3".
 var three = list.get(3);
@@ -519,7 +529,7 @@ Example 1: Basic Usage:
 var arr = [1,2,3,4,5];
 
 // New LinkedList is created using the contents of `arr`.
-var list = new differentia.LinkedList(arr);
+var list = new LinkedList(arr);
 
 // Get the element which contains "3".
 var three = list.get(3);
@@ -553,7 +563,7 @@ Example 1: Basic Usage:
 var arr = [1,2,3,4,5];
 
 // New LinkedList is created using the contents of `arr`.
-var list = new differentia.LinkedList(arr);
+var list = new LinkedList(arr);
 
 // Inserts "0" at the beginning of the list.
 var zero = list.prepend(0);
@@ -594,7 +604,7 @@ Example 1: Basic Usage:
 var arr = [1,2,3,4,5];
 
 // New LinkedList is created using the contents of `arr`.
-var list = new differentia.LinkedList(arr);
+var list = new LinkedList(arr);
 
 // Inserts "6" at the end of the list.
 var six = list.append(6);
@@ -628,7 +638,7 @@ Example 1: Basic Usage:
 var arr = [1,2,3,4,5];
 
 // New LinkedList is created using the contents of `arr`.
-var list = new differentia.LinkedList(arr);
+var list = new LinkedList(arr);
 
 // Removes and returns the first element in the list.
 var one = list.shift();
@@ -657,7 +667,7 @@ Example 1: Basic Usage:
 var arr = [1,2,3,4,5];
 
 // New LinkedList is created using the contents of `arr`.
-var list = new differentia.LinkedList(arr);
+var list = new LinkedList(arr);
 
 // Returns the element containing "2".
 var two = list.get(2);
@@ -672,11 +682,11 @@ list.pushBack(two);
 ```JavaScript
 new CircularDoubleLinkedList( [ iterable = null ] );
 ```
-> Inherits from [LinkedList](http://differentia.io/?p=LinkedList)
+> Inherits from [LinkedList](#linkedlist)
 
-> Uses [ListElement](http://differentia.io/?p=ListElement) to represent the list structure.
+> Uses [ListElement](#listelement-1) to represent the list structure.
 
-> Refer to the [LinkedList](http://differentia.io/?p=LinkedList) documentation for member methods & properties.
+> Refer to the [LinkedList](#linkedlist) documentation for member methods & properties.
 
 Circular Doubly Linked List. Elements have references to previous elements, making some operations faster.
 
@@ -693,7 +703,7 @@ Example 1: Basic Usage:
 var arr = [1,2,3,4,5];
 
 // New LinkedList is created using the contents of `arr`.
-var list = new differentia.CircularDoubleLinkedList(arr);
+var list = new CircularDoubleLinkedList(arr);
 
 // Append "6" to the end of the list, returns a new ListElement.
 var six = list.push(6);
@@ -716,11 +726,11 @@ for (const element of list) {
 ```JavaScript
 new CircularLinkedList( [ iterable = null ] );
 ```
-> Inherits from [LinkedList](http://differentia.io/?p=LinkedList)
+> Inherits from [LinkedList](#linkedlist)
 
-> Uses [ListElement](http://differentia.io/?p=ListElement) to represent the list structure.
+> Uses [ListElement](#listelement-1) to represent the list structure.
 
-> Refer to the [LinkedList](http://differentia.io/?p=LinkedList) documentation for member methods & properties.
+> Refer to the [LinkedList](#linkedlist) documentation for member methods & properties.
 
 Circular Singly Linked List. The tail and head elements are connected to create a cycle. Iterators will infinitely loop through this list unless they are either interrupted or the list structure becomes broken.
 
@@ -737,7 +747,7 @@ Example 1: Basic Usage:
 var arr = [1,2,3,4,5];
 
 // New LinkedList is created using the contents of `arr`.
-var list = new differentia.CircularDoubleLinkedList(arr);
+var list = new CircularDoubleLinkedList(arr);
 
 // Append "6" to the end of the list, returns a new ListElement.
 var six = list.push(6);
@@ -760,11 +770,11 @@ for (const element of list) {
 ```JavaScript
 new CircularDoubleLinkedList( [ iterable = null ] );
 ```
-> Inherits from [LinkedList](http://differentia.io/?p=LinkedList)
+> Inherits from [LinkedList](#linkedlist)
 
-> Uses [ListElement](http://differentia.io/?p=ListElement) to represent the list structure.
+> Uses [ListElement](#listelement-1) to represent the list structure.
 
-> Refer to the [LinkedList](http://differentia.io/?p=LinkedList) documentation for member methods & properties.
+> Refer to the [LinkedList](#linkedlist) documentation for member methods & properties.
 
 Circular Doubly Linked List. Elements have references to previous elements, making some operations faster. The tail and head elements are connected to create a cycle. Iterators will infinitely loop through this list unless they are either interrupted or the list structure becomes broken.
 
@@ -781,7 +791,7 @@ Example 1: Basic Usage:
 var arr = [1,2,3,4,5];
 
 // New LinkedList is created using the contents of `arr`.
-var list = new differentia.CircularDoubleLinkedList(arr);
+var list = new CircularDoubleLinkedList(arr);
 
 // Append "6" to the end of the list, returns a new ListElement.
 var six = list.push(6);
@@ -804,7 +814,7 @@ for (const element of list) {
 ```JavaScript
 new LinkedList.ListElement( [ payload = null ], [ next = null ], [ prev = null ] );
 ```
-The class used internally by [LinkedList](http://differentia.io/?p=LinkedList) to represent an element of the Linked List.
+The class used internally by [LinkedList](#linkedlist) to represent an element of the Linked List.
 
 ## Parameters
 - **`payload`** (*Optional*) Any
@@ -827,7 +837,7 @@ Example 1: Basic Usage
 var number = 123;
 
 // Creates a new empty LinkedList.
-var list = new differentia.LinkedList();
+var list = new LinkedList();
 
 // Creates a new ListElement with `ints` assigned to `element.payload`
 var element = new list.ListElement(number);
@@ -859,10 +869,10 @@ Example 1: Basic Usage:
 
 ```JavaScript
 // A source ListElement
-var element1 = new differentia.LinkedList.ListElement(123);
+var element1 = new LinkedList.ListElement(123);
 
 // A destination ListElement
-var element2 =  new differentia.LinkedList.ListElement();
+var element2 =  new LinkedList.ListElement();
 
 // Copies the payload of `element1` into `element2`.
 element2.fromElement(element1);
