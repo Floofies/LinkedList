@@ -269,7 +269,7 @@ LinkedList.prototype.insertBefore = function (element, newElement) {
 };
 /**
  * prepend - Inserts a ListElement at the beginning of the LinkedList.
- * @param {ListElement} newElement  A ListElement object to add to the beginning of the LinkedList.
+ * @param {ListElement} newElement  A ListElement or arbitrary value to add to the beginning of the LinkedList.
  * @returns {ListElement}    The newly inserted ListElement.
  */
 LinkedList.prototype.prepend = function (newElement) {
@@ -277,7 +277,7 @@ LinkedList.prototype.prepend = function (newElement) {
 };
 /**
  * prepend - Inserts a ListElement at the end of the LinkedList.
- * @param {ListElement} newElement  A ListElement object to add to the end of the LinkedList.
+ * @param {ListElement} newElement  A ListElement or arbitrary value to add to the end of the LinkedList.
  * @returns {ListElement}           The newly inserted ListElement.
  */
 LinkedList.prototype.append = function (newElement) {
@@ -285,19 +285,19 @@ LinkedList.prototype.append = function (newElement) {
 };
 /**
  * push - Inserts a ListElement at the end of the LinkedList.
- * @param {ListElement} newElement  A ListElement object to add to the end of the LinkedList.
+ * @param {ListElement} newElement  A ListElement or arbitrary value to add to the end of the LinkedList.
  * @returns {ListElement}           The newly inserted ListElement.
  */
 LinkedList.prototype.push = LinkedList.prototype.append;
 /**
  * unshift - Inserts a ListElement at the beginning of the LinkedList.
- * @param {ListElement} newElement  A ListElement object to add to the beginning of the LinkedList.
+ * @param {ListElement} newElement  A ListElement or arbitrary value to add to the beginning of the LinkedList.
  * @returns {ListElement}           The newly inserted ListElement.
  */
 LinkedList.prototype.unshift = LinkedList.prototype.prepend;
 /**
  * pop - Removes an element from the end of the LinkedList and returns it.
- * @returns {(ListElement|null)}  The removed ListElement, , or `null` if the list is empty.
+ * @returns {(ListElement|null)}  The removed ListElement or `null` if the list is empty.
  */
 LinkedList.prototype.pop = function () {
 	if (this.double) return this.remove(this.tail.prev);
@@ -305,7 +305,7 @@ LinkedList.prototype.pop = function () {
 };
 /**
  * shift - Removes an element from the beginning of the LinkedList and returns it.
- * @returns {(ListElement|null)}  The removed ListElement, , or `null` if the list is empty. */
+ * @returns {(ListElement|null)}  The removed ListElement or `null` if the list is empty. */
 LinkedList.prototype.shift = function () {
 	return this.remove(this.head.next);
 };
@@ -324,8 +324,8 @@ LinkedList.prototype.pushBack = function (element) {
 /**
  * copyWithin -  Shallow copies ListElements to another location in the same LinkedList and returns it, without modifying its size.
  * @param {number} target                 Zero based index at which to copy the sequence to. If negative, `target` will be counted from the end.
- *                                         If `target` is at or greater than `LinkedList.length`, nothing will be copied.
- *                                         If `target` is positioned after start, the copied sequence will be trimmed to fit arr.length.
+ *                                         If `target` is at or greater than `LinkedList.size`, nothing will be copied.
+ *                                         If `target` is positioned after start, the copied sequence will be trimmed to fit LinkedList.size.
  * @param {number} [start=0]              Zero based index at which to start copying elements from. If negative, `start` will be counted from the end.
  *                                         If `start` is omitted, copyWithin will copy from the start (defaults to 0).
  * @param {number} [end=LinkedList.size]  Zero based index at which to end copying elements from. Copies up to but not including end.
@@ -358,7 +358,7 @@ LinkedList.prototype.copyWithin = function (target, start = 0, end = this.size) 
 		if (from >= 0 && from < this.size) {
 			toElement.payload = this.item(from).payload;
 		} else {
-			this.delete(this.toElement);
+			this.remove(this.toElement);
 		}
 		from += direction;
 		to += direction;

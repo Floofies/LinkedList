@@ -19,25 +19,30 @@ Singly linked, doubly linked, and circular LinkedList classes.
     - [`forEach`](#linkedlistprototypeforeach)
     - [`fromIterable`](#linkedlistprototypefromiterable)
     - [`coerceElement`](#linkedlistprototypecoerceelement)
-    - [`item`](@linkedlistprototypeitem)
-    - [`find`](@linkedlistprototypefind)
-    - [`clear`](@linkedlistprototypeclear)
-    - [`concat`](@linkedlistprototypeconcat)
-    - [`remove`](@linkedlistprototyperemove)
-    - [`insertBefore`](@linkedlistprototypeinsertbefore)
-    - [`insertAfter`](@linkedlistprototypeinsertafter)
-    - [`prepend`](@linkedlistprototypeprepend)
-    - [`unshift`](@linkedlistprototypeunshift)
-    - [`append`](@linkedlistprototypeappend)
-    - [`push`](@linkedlistprototypepush)
-    - [`shift`](@linkedlistprototypeshift)
-    - [`pushBack`](@linkedlistprototypepushback)
+    - [`item`](#linkedlistprototypeitem)
+    - [`find`](#linkedlistprototypefind)
+    - [`includes`](#linkedlistprototypeincludes)
+    - [`getPrev`](#linkedlistprototypegetprev)
+    - [`first`](#linkedlistprototypefirst)
+    - [`last`](#linkedlistprototypelast)
+    - [`clear`](#linkedlistprototypeclear)
+    - [`concat`](#linkedlistprototypeconcat)
+    - [`remove`](#linkedlistprototyperemove)
+    - [`insertBefore`](#linkedlistprototypeinsertbefore)
+    - [`insertAfter`](#linkedlistprototypeinsertafter)
+    - [`prepend`](#linkedlistprototypeprepend)
+    - [`unshift`](#linkedlistprototypeunshift)
+    - [`append`](#linkedlistprototypeappend)
+    - [`push`](#linkedlistprototypepush)
+    - [`shift`](#linkedlistprototypeshift)
+    - [`pushBack`](#linkedlistprototypepushback)
+    - [`copyWithin`](#linkedlistprototypecopywithin)
 - [`DoubleLinkedList`](#doublelinkedlist)
 - [`CircularLinkedList`](#circularlinkedlist)
 - [`CircularDoubleLinkedList`](#circularlinkedlist)
 - [`ListElement`](#listelement)
   - [Prototype Methods](#prototype-methods-1)
-    - [`fromElement`](@fromelement)
+    - [`fromElement`](#fromelement)
 
 You can import the list constructors like so:
 
@@ -401,6 +406,115 @@ var foundElement = list.find(3);
 
 ---
 
+### `LinkedList.prototype.includes`
+
+*Function*
+```JavaScript
+LinkedList.includes( value );
+```
+Returns `true` if a ListElement is found which contains a payload matching `value`, or `false` if one was not found.
+
+#### Parameters
+- **`value`** Any
+
+  A value to search for in the LinkedList.
+
+#### Examples
+Example 1: Basic Usage:
+
+```JavaScript
+// Array of arbitrary numbers.
+var arr = [1,2,3,4,5];
+
+// New LinkedList is created using the contents of `arr`.
+var list = new LinkedList(arr);
+
+// Returns `true`.
+var foundElement = list.includes(3);
+```
+
+---
+
+### `LinkedList.prototype.getPrev`
+
+*Function*
+```JavaScript
+LinkedList.getPrev( element );
+```
+Returns the ListElement located before `element`, or `null` if it was not found.
+
+#### Parameters
+- **`element`** ListElement
+
+  A ListElement to search for the preceding ListElement of in the LinkedList.
+
+#### Examples
+Example 1: Basic Usage:
+
+```JavaScript
+// Array of arbitrary numbers.
+var arr = [1,2,3,4,5];
+
+// New LinkedList is created using the contents of `arr`.
+var list = new LinkedList(arr);
+
+// Returns the element containing "2".
+var two = list.find(2);
+
+// Returns the ListElement containing "1".
+var prevElement = list.getPrev(two);
+```
+
+---
+
+### `LinkedList.prototype.first`
+
+*Function*
+```JavaScript
+LinkedList.first();
+```
+Returns the element at the beginning of the LinkedList, or `null` if the list is empty.
+
+#### Examples
+Example 1: Basic Usage:
+
+```JavaScript
+// Array of arbitrary numbers.
+var arr = [1,2,3,4,5];
+
+// New LinkedList is created using the contents of `arr`.
+var list = new LinkedList(arr);
+
+// Returns the element containing "1".
+var one = list.first();
+```
+
+---
+
+### `LinkedList.prototype.last`
+
+*Function*
+```JavaScript
+LinkedList.flast();
+```
+Returns the element at the end of the LinkedList, or `null` if the list is empty.
+
+#### Examples
+Example 1: Basic Usage:
+
+```JavaScript
+// Array of arbitrary numbers.
+var arr = [1,2,3,4,5];
+
+// New LinkedList is created using the contents of `arr`.
+var list = new LinkedList(arr);
+
+// Returns the element containing "5".
+var five = list.last();
+```
+
+---
+
 ### `LinkedList.prototype.clear`
 
 *Function*
@@ -506,7 +620,7 @@ Inserts a ListElement before `element`
 
   A ListElement object to prepend with newElement.
 
-- **`element`** Any
+- **`newElement`** Any
 
   A ListElement or arbitrary value to add to the LinkedList before `element`.
 
@@ -542,7 +656,7 @@ Inserts a ListElement after `element`
 
   A ListElement object to prepend with newElement.
 
-- **`element`** Any
+- **`newElement`** Any
 
   A ListElement or arbitrary value to add to the LinkedList after `element`.
 
@@ -578,7 +692,7 @@ Inserts a ListElement at the beginning of the LinkedList.
 #### Parameters
 - **`element`** Any
 
-  A ListElement object to prepend the LinkedList with.
+  A ListElement or arbitrary value to prepend the LinkedList with.
 
 #### Examples
 Example 1: Basic Usage:
@@ -602,7 +716,7 @@ var zero = list.prepend(0);
 ```JavaScript
 LinkedList.unshift( element );
 ```
-An alias of [`LinkedList.prepend`](@prepend).
+An alias of [`LinkedList.prepend`](#prepend).
 
 ---
 
@@ -619,7 +733,7 @@ Inserts a ListElement at the end of the LinkedList.
 #### Parameters
 - **`element`** Any
 
-  A ListElement object to append the LinkedList with.
+  A ListElement or arbitrary value to append the LinkedList with.
 
 #### Examples
 Example 1: Basic Usage:
@@ -643,7 +757,7 @@ var six = list.append(6);
 ```JavaScript
 LinkedList.push( element );
 ```
-An alias of [`LinkedList.prototype.append`](@append).
+An alias of [`LinkedList.prototype.append`](#append).
 
 ---
 
@@ -699,6 +813,56 @@ var two = list.find(2);
 
 // Moves "2" to the end of the list.
 list.pushBack(two);
+```
+
+---
+
+### `LinkedList.prototype.copyWithin`
+
+*Function*
+```JavaScript
+LinkedList.copyWithin( target [, start = 0 [, end = LinkedList.size ]] );
+```
+Shallow copies ListElements to another location in the same LinkedList and returns it, without modifying its size.
+
+#### Parameters
+- **`target`** Number
+
+  Zero based index at which to copy the sequence to. If negative, `target` will be counted from the end. If `target` is at or greater than `LinkedList.size`, nothing will be copied. If `target` is positioned after start, the copied sequence will be trimmed to fit LinkedList.size.
+
+- **`start`** (*Optional*) Number
+
+  Zero based index at which to start copying elements from. If negative, `start` will be counted from the end. If `start` is omitted, copyWithin will copy from the start of the LinkedList (defaults to 0).
+
+- **`end`** (*Optional*) Number
+
+  Zero based index at which to end copying elements from. Copies up to but not including end. If negative, `end` will be counted from the end.
+
+#### Examples
+Example 1: Basic Usage:
+
+```JavaScript
+// Array of arbitrary numbers.
+var arr = [1,2,3,4,5];
+
+// New LinkedList is created using the contents of `arr`.
+var list = new LinkedList(arr);
+
+// Copy to index 0 the element at index 3.
+list.copyWithin(0, 3, 4);
+
+// Logs 4, 2, 3, 4, 5
+for (const element of list) {
+	console.log(element.payload);
+}
+
+// Copy to index 1 all elements from index 3 to the end.
+list.copyWithin(1, 3);
+
+// Logs 4, 4, 5, 4, 5
+for (const element of list) {
+	console.log(element.payload);
+}
 ```
 
 ---
