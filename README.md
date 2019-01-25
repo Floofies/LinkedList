@@ -2,10 +2,40 @@
 Singly linked, doubly linked, and circular LinkedList classes.
 
 - [`LinkedList`](#linkedlist)
+  -[Instance Properties](#instance-properties)
+    - [`head`](#linkedlisthead)
+    - [`tail`](#linkedlisttail)
+    - [`size`](#linkedlistsize)
+    - [`double`](#linkedlistdouble)
+    - [`circular`](#linkedlistcircular)
+  - [Constructor Properties](#constructor-properties)
+    - [`ListElement`](#linkedlistlistelement)
+  - [Prototype Methods](#prototype-methods)
+    - [`@@iterator`](#linkedlistprototypeiterator)
+    - [`values`](#linkedlistprototypevalues)
+    - [`elements`](#linkedlistprototypeelements)
+    - [`forEach`](#linkedlistprototypeforeach)
+    - [`fromIterable`](#linkedlistprototypefromiterable)
+    - [`coerceElement`](#linkedlistprototypecoerceelement)
+    - [`item`](@linkedlistprototypeitem)
+    - [`find`](@linkedlistprototypefind)
+    - [`clear`](@linkedlistprototypeclear)
+    - [`concat`](@linkedlistprototypeconcat)
+    - [`remove`](@linkedlistprototyperemove)
+    - [`insertBefore`](@linkedlistprototypeinsertbefore)
+    - [`insertAfter`](@linkedlistprototypeinsertafter)
+    - [`prepend`](@linkedlistprototypeprepend)
+    - [`unshift`](@linkedlistprototypeunshift)
+    - [`append`](@linkedlistprototypeappend)
+    - [`push`](@linkedlistprototypepush)
+    - [`shift`](@linkedlistprototypeshift)
+    - [`pushBack`](@linkedlistprototypepushback)
 - [`DoubleLinkedList`](#doublelinkedlist)
 - [`CircularLinkedList`](#circularlinkedlist)
 - [`CircularDoubleLinkedList`](#circularlinkedlist)
-- [`ListElement`](#listelement-1)
+- [`ListElement`](#listelement)
+  - [Prototype Methods](#prototype-methods-1)
+    - [`fromElement`](@fromelement)
 
 You can import the list constructors like so:
 
@@ -29,11 +59,12 @@ const {
 
 # `LinkedList`
 
-*Class*
+*Constructor*
+
 ```JavaScript
 new LinkedList( [ iterable = null ] );
 ```
-> Uses [ListElement](#listelement-1) to represent the list structure.
+> Uses [ListElement](#listelement) to represent the list structure.
 
 Acyclic Singly Linked List.
 
@@ -69,7 +100,7 @@ for (const element of list) {
 
 ## Instance Properties
 
-### `head`
+### `LinkedList.head`
 
 *ListElement*
 ```JavaScript
@@ -77,9 +108,7 @@ LinkedList.head
 ```
 A ListElement which is considered the head/start of the list, and is used to begin enumeration of subsequent ListElements.
 
----
-
-### `tail`
+### `LinkedList.tail`
 
 *ListElement*
 ```JavaScript
@@ -87,9 +116,7 @@ LinkedList.tail
 ```
 A ListElement which is considered the tail/end of the list, and is used to end enumeration of preceding ListElements.
 
----
-
-### `size`
+### `LinkedList.size`
 
 *Number*
 ```JavaScript
@@ -97,9 +124,7 @@ LinkedList.size
 ```
 A number representing the quantity of ListElements within the LinkedList, not counting the head and tail elements.
 
----
-
-### `double`
+### `LinkedList.double`
 
 *Boolean*
 ```JavaScript
@@ -107,9 +132,7 @@ LinkedList.double
 ```
 Indicates if the LinkedList is doubly linked, linking every ListElement in both directions.
 
----
-
-### `circular`
+### `LinkedList.circular`
 
 *Boolean*
 ```JavaScript
@@ -119,17 +142,17 @@ Indicates if the LinkedList is circular, linking the head and tail elements.
 
 ---
 
-## Member Properties
+## Constructor Properties
 
-### `ListElement`
+### `LinkedList.ListElement`
 
-[See the ListElement documentation.](#listelement-1)
+[See the ListElement documentation.](#listelement)
 
 ---
 
-## Member Methods
+## Prototype Methods
 
-### `@@iterator`
+### `LinkedList.prototype.@@iterator`
 
 *Iterator*
 ```JavaScript
@@ -171,7 +194,7 @@ for (const value of list[Symbol.iterator](true)) console.log(element.payload);
 
 ---
 
-### `values`
+### `LinkedList.prototype.values`
 
 *Iterator*
 ```JavaScript
@@ -195,7 +218,7 @@ for (const value of list.values()) console.log(value);
 
 ---
 
-### `elements`
+### `LinkedList.prototype.elements`
 
 *Iterator*
 ```JavaScript
@@ -263,7 +286,7 @@ list.forEach(function (value, index, list) {
 
 ---
 
-### `fromIterable`
+### `LinkedList.prototype.fromIterable`
 
 *Function*
 ```JavaScript
@@ -292,7 +315,7 @@ list.fromIterable(arr);
 
 ---
 
-### `coerceElement`
+### `LinkedList.prototype.coerceElement`
 
 *Function*
 ```JavaScript
@@ -318,7 +341,7 @@ var element = LinkedList.coerceElement(numbers);
 
 ---
 
-### `item`
+### `LinkedList.prototype.item`
 
 *Function*
 ```JavaScript
@@ -347,7 +370,7 @@ var foundElement = list.item(4);
 
 ---
 
-### `find`
+### `LinkedList.prototype.find`
 
 *Function*
 ```JavaScript
@@ -376,7 +399,7 @@ var foundElement = list.find(3);
 
 ---
 
-### `clear`
+### `LinkedList.prototype.clear`
 
 *Function*
 ```JavaScript
@@ -400,7 +423,7 @@ list.clear();
 
 ---
 
-### `concat`
+### `LinkedList.prototype.concat`
 
 *Function*
 ```JavaScript
@@ -436,7 +459,7 @@ for (const element of list) {
 
 ---
 
-### `remove`
+### `LinkedList.prototype.remove`
 
 *Function*
 ```JavaScript
@@ -460,7 +483,7 @@ var arr = [1,2,3,4,5];
 var list = new LinkedList(arr);
 
 // Get the element which contains "3".
-var three = list.get(3);
+var three = list.find(3);
 
 // Removes the element from the list.
 list.remove(three);
@@ -468,7 +491,7 @@ list.remove(three);
 
 ---
 
-### `insertBefore`
+### `LinkedList.prototype.insertBefore`
 
 *Function*
 ```JavaScript
@@ -496,7 +519,7 @@ var arr = [1,2,3,4,5];
 var list = new LinkedList(arr);
 
 // Get the element which contains "3".
-var three = list.get(3);
+var three = list.find(3);
 
 // Inserts "2.5" before "3".
 var twoPointFive = list.insertBefore(three, 2.5);
@@ -504,7 +527,7 @@ var twoPointFive = list.insertBefore(three, 2.5);
 
 ---
 
-### `insertAfter`
+### `LinkedList.prototype.insertAfter`
 
 *Function*
 ```JavaScript
@@ -532,7 +555,7 @@ var arr = [1,2,3,4,5];
 var list = new LinkedList(arr);
 
 // Get the element which contains "3".
-var three = list.get(3);
+var three = list.find(3);
 
 // Inserts "3.5" after "3".
 var threePointFive = list.insertAfter(three, 3.5);
@@ -540,7 +563,7 @@ var threePointFive = list.insertAfter(three, 3.5);
 
 ---
 
-### `prepend`
+### `LinkedList.prototype.prepend`
 
 *Function*
 ```JavaScript
@@ -571,17 +594,17 @@ var zero = list.prepend(0);
 
 ---
 
-### `unshift`
+### `LinkedList.prototype.unshift`
 
 *Function*
 ```JavaScript
 LinkedList.unshift( element );
 ```
-An alias of `LinkedList.prepend`.
+An alias of [`LinkedList.prepend`](@prepend).
 
 ---
 
-### `append`
+### `LinkedList.prototype.append`
 
 *Function*
 ```JavaScript
@@ -612,17 +635,17 @@ var six = list.append(6);
 
 ---
 
-### `push`
+### `LinkedList.prototype.push`
 
 *Function*
 ```JavaScript
 LinkedList.push( element );
 ```
-An alias of `LinkedList.append`.
+An alias of [`LinkedList.prototype.append`](@append).
 
 ---
 
-### `shift`
+### `LinkedList.prototype.shift`
 
 *Function*
 ```JavaScript
@@ -646,7 +669,7 @@ var one = list.shift();
 
 ---
 
-### `pushBack`
+### `LinkedList.prototype.pushBack`
 
 *Function*
 ```JavaScript
@@ -670,21 +693,24 @@ var arr = [1,2,3,4,5];
 var list = new LinkedList(arr);
 
 // Returns the element containing "2".
-var two = list.get(2);
+var two = list.find(2);
 
 // Moves "2" to the end of the list.
 list.pushBack(two);
 ```
 
+---
+
 # `DoubleLinkedList`
 
-*Class*
+*Constructor*
+
 ```JavaScript
-new CircularDoubleLinkedList( [ iterable = null ] );
+new DoubleLinkedList( [ iterable = null ] );
 ```
 > Inherits from [LinkedList](#linkedlist)
 
-> Uses [ListElement](#listelement-1) to represent the list structure.
+> Uses [ListElement](#listelement) to represent the list structure.
 
 > Refer to the [LinkedList](#linkedlist) documentation for member methods & properties.
 
@@ -702,8 +728,8 @@ Example 1: Basic Usage:
 // Array of arbitrary numbers.
 var arr = [1,2,3,4,5];
 
-// New LinkedList is created using the contents of `arr`.
-var list = new CircularDoubleLinkedList(arr);
+// New DoubleLinkedList is created using the contents of `arr`.
+var list = new DoubleLinkedList(arr);
 
 // Append "6" to the end of the list, returns a new ListElement.
 var six = list.push(6);
@@ -720,15 +746,18 @@ for (const element of list) {
 }
 ```
 
+---
+
 # `CircularLinkedList`
 
-*Class*
+*Constructor*
+
 ```JavaScript
 new CircularLinkedList( [ iterable = null ] );
 ```
 > Inherits from [LinkedList](#linkedlist)
 
-> Uses [ListElement](#listelement-1) to represent the list structure.
+> Uses [ListElement](#listelement) to represent the list structure.
 
 > Refer to the [LinkedList](#linkedlist) documentation for member methods & properties.
 
@@ -746,8 +775,8 @@ Example 1: Basic Usage:
 // Array of arbitrary numbers.
 var arr = [1,2,3,4,5];
 
-// New LinkedList is created using the contents of `arr`.
-var list = new CircularDoubleLinkedList(arr);
+// New CircularLinkedList is created using the contents of `arr`.
+var list = new CircularLinkedList(arr);
 
 // Append "6" to the end of the list, returns a new ListElement.
 var six = list.push(6);
@@ -764,15 +793,18 @@ for (const element of list) {
 }
 ```
 
+---
+
 # `CircularDoubleLinkedList`
 
-*Class*
+*Constructor*
+
 ```JavaScript
 new CircularDoubleLinkedList( [ iterable = null ] );
 ```
 > Inherits from [LinkedList](#linkedlist)
 
-> Uses [ListElement](#listelement-1) to represent the list structure.
+> Uses [ListElement](#listelement) to represent the list structure.
 
 > Refer to the [LinkedList](#linkedlist) documentation for member methods & properties.
 
@@ -790,7 +822,7 @@ Example 1: Basic Usage:
 // Array of arbitrary numbers.
 var arr = [1,2,3,4,5];
 
-// New LinkedList is created using the contents of `arr`.
+// New CircularDoubleLinkedList is created using the contents of `arr`.
 var list = new CircularDoubleLinkedList(arr);
 
 // Append "6" to the end of the list, returns a new ListElement.
@@ -808,11 +840,13 @@ for (const element of list) {
 }
 ```
 
+---
+
 # `ListElement`
 
-*Function*
+*Constructor*
 ```JavaScript
-new LinkedList.ListElement( [ payload = null ], [ next = null ], [ prev = null ] );
+new ListElement( [ payload = null ], [ next = null ], [ prev = null ] );
 ```
 The class used internally by [LinkedList](#linkedlist) to represent an element of the Linked List.
 
@@ -833,14 +867,14 @@ The class used internally by [LinkedList](#linkedlist) to represent an element o
 Example 1: Basic Usage
 
 ```JavaScript
-// An arbitrary number.
-var number = 123;
+// A Number
+var num = 123;
 
 // Creates a new empty LinkedList.
 var list = new LinkedList();
 
-// Creates a new ListElement with `ints` assigned to `element.payload`
-var element = new list.ListElement(number);
+// Creates a new ListElement with `num` assigned to `element.payload`
+var element = new list.ListElement(num);
 
 // Appends `element` to the end of the list.
 list.push(element);
@@ -849,9 +883,9 @@ list.push(element);
 list.remove(element);
 ```
 
-## Member Methods
+## Prototype Methods
 
-### `fromElement`
+### `LinkedList.prototype.fromElement`
 
 *Function*
 ```JavaScript
