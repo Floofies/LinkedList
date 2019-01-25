@@ -1,5 +1,5 @@
 {
-	"name": "linkedlists",
+	"name": "listlib",
 	"version": "1.0.0",
 	"description": "Singly linked, doubly linked, and circular LinkedList",
 	"keywords": [
@@ -8,6 +8,10 @@
 		"linkedlist",
 		"linked-list",
 		"list",
+		"doubly-linked-list",
+		"double-linked-list",
+		"circular-linked-list",
+		"circular-doubly-linked-list",
 		"datastructure",
 		"data-structure"
 	],
