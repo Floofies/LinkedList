@@ -1,4 +1,4 @@
-const LinkedList = require("./LinkedList");
+const LinkedList = require("./LinkedList.js");
 /**
  * CircularLinkedList - A Cyclic LinkedList with connected head and tail elements.
  * @param {Iterable} [iterable=null]  Optional iterable to populate the new CircularLinkedList.
