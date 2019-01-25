@@ -430,7 +430,7 @@ var arr = [1,2,3,4,5];
 var list = new LinkedList(arr);
 
 // Returns `true`.
-var foundElement = list.includes(3);
+var wasFound = list.includes(3);
 ```
 
 ---
@@ -462,7 +462,7 @@ var list = new LinkedList(arr);
 var two = list.find(2);
 
 // Returns the ListElement containing "1".
-var prevElement = list.getPrev(two);
+var one = list.getPrev(two);
 ```
 
 ---
@@ -495,7 +495,7 @@ var one = list.first();
 
 *Function*
 ```JavaScript
-LinkedList.flast();
+LinkedList.last();
 ```
 Returns the element at the end of the LinkedList, or `null` if the list is empty.
 
